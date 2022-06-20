@@ -1,0 +1,95 @@
+Below the project, I had created for this coding challenge.
+https://github.com/blancheta/global_python_task/
+
+[General] Do you know about Django Rest Framework?
+
+[Doc] Can you add a requirements.txt file?
+[Doc] Can you add a README.md explaining?
+- how to setup the project
+- how to test the project
+- how to import the data into the project
+- how to run the project
+
+[Model] Rename Tracks to Track
+[Model] Why did you choose max_length=1024 for title?
+[Model] Why did you choose max_length=1024 for artist?
+[Model] Why did you use a float there? Could another data type be better?
+[Model] Is having an empty string for an artist in a track without artist the best way? should we use null instead?
+[Model] If you sort tracks by artist, this would result in having an artist called "" containing tracks without authors
+[Model] Why did you choose to create the artist as a charfield instead of a model?
+[Model] To list the count of tracks per artist, did you also consider featuring with other artists?
+
+[Data] Why did you comment out bulk_create? What is the difference between bulk_create and for..loop  + save inside
+[Data] Did you cleanup the data for artists ? eg: "Randy Crawford & The Crusaders" and "Crusaders / Randy Crawford" represents two artists who partnered on 2 different tracks
+[Data] Do you know about fixtures in Django?
+
+[Forms] Missing empty line between django import and current module import, have you used black?
+[Forms] Two empty lines between imports and form definition
+
+[Command] Could you use a django command to import the tracks?
+What are the benefits/drawback of this decision?
+
+[View] Could you use Django aggregate methods instead of using for loops and filter
+https://docs.djangoproject.com/en/4.0/topics/db/aggregation/
+Try to think about the SQL requests sent under the hood. Is that optimised? Do you know Django toolbar?
+[View] Filters on tracks are all sharing the same base, could you create a unique endpoint taking a filter as an argument?
+https://docs.djangoproject.com/en/4.0/ref/models/expressions/ hints: Count, OuterRef, SubQuery, annotate
+[View] Could you use the Django pagination system to list the first 100 results?
+[View] Many code duplicates specially around filters. How could we have done better?
+
+[Test] Can you add at least some api view tests?
+[Test] Can you add some fixtures to import track data?
+
+Pylint report
+
+> pylint tracks_API
+************* Module tracks_API
+tracks_API/__init__.py:1:0: F0010: error while code parsing: Unable to load file tracks_API/__init__.py:
+[Errno 2] No such file or directory: 'tracks_API/__init__.py' (parse-error)
+Alexandres-MacBook-Pro% cd tracks_API
+Alexandres-MacBook-Pro% pylint tracks_API
+************* Module tracks_API
+tracks_API/__init__.py:1:0: C0103: Module name "tracks_API" doesn't conform to snake_case naming style (invalid-name)
+************* Module tracks_API.models
+tracks_API/models.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tracks_API/models.py:5:0: C0115: Missing class docstring (missing-class-docstring)
+^[[A************* Module tracks_API.forms
+tracks_API/forms.py:12:0: C0304: Final newline missing (missing-final-newline)
+tracks_API/forms.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tracks_API/forms.py:4:0: C0115: Missing class docstring (missing-class-docstring)
+tracks_API/forms.py:5:4: C0115: Missing class docstring (missing-class-docstring)
+tracks_API/forms.py:5:4: R0903: Too few public methods (0/2) (too-few-public-methods)
+************* Module tracks_API.load_initial_tracks_data
+tracks_API/load_initial_tracks_data.py:12:0: C0303: Trailing whitespace (trailing-whitespace)
+tracks_API/load_initial_tracks_data.py:14:0: C0303: Trailing whitespace (trailing-whitespace)
+tracks_API/load_initial_tracks_data.py:21:0: C0301: Line too long (114/100) (line-too-long)
+tracks_API/load_initial_tracks_data.py:22:0: C0304: Final newline missing (missing-final-newline)
+tracks_API/load_initial_tracks_data.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tracks_API/load_initial_tracks_data.py:8:0: C0116: Missing function or method docstring (missing-function-docstring)
+tracks_API/load_initial_tracks_data.py:13:24: R1732: Consider using 'with' for resource-allocating operations (consider-using-with)
+tracks_API/load_initial_tracks_data.py:13:24: W1514: Using open without explicitly specifying an encoding (unspecified-encoding)
+tracks_API/load_initial_tracks_data.py:5:0: C0411: standard import "from datetime import datetime" should be placed before "from tracks_API.settings import BASE_DIR" (wrong-import-order)
+************* Module tracks_API.views
+tracks_API/views.py:1:0: C0114: Missing module docstring (missing-module-docstring)
+tracks_API/views.py:10:0: C0115: Missing class docstring (missing-class-docstring)
+tracks_API/views.py:11:4: C0116: Missing function or method docstring (missing-function-docstring)
+tracks_API/views.py:14:20: E1101: Class 'Tracks' has no 'objects' member (no-member)
+tracks_API/views.py:11:18: W0613: Unused argument 'request' (unused-argument)
+tracks_API/views.py:27:4: C0116: Missing function or method docstring (missing-function-docstring)
+tracks_API/views.py:37:0: C0115: Missing class docstring (missing-class-docstring)
+tracks_API/views.py:38:4: C0116: Missing function or method docstring (missing-function-docstring)
+tracks_API/views.py:40:17: E1101: Class 'Tracks' has no 'objects' member (no-member)
+tracks_API/views.py:38:18: W0613: Unused argument 'request' (unused-argument)
+tracks_API/views.py:55:0: C0115: Missing class docstring (missing-class-docstring)
+tracks_API/views.py:56:4: C0116: Missing function or method docstring (missing-function-docstring)
+tracks_API/views.py:58:17: E1101: Class 'Tracks' has no 'objects' member (no-member)
+tracks_API/views.py:56:18: W0613: Unused argument 'request' (unused-argument)
+tracks_API/views.py:73:0: C0115: Missing class docstring (missing-class-docstring)
+tracks_API/views.py:74:4: C0116: Missing function or method docstring (missing-function-docstring)
+tracks_API/views.py:76:18: E1101: Class 'Tracks' has no 'objects' member (no-member)
+tracks_API/views.py:84:32: E1101: Class 'Tracks' has no 'objects' member (no-member)
+tracks_API/views.py:87:41: E1101: Class 'Tracks' has no 'objects' member (no-member)
+tracks_API/views.py:74:18: W0613: Unused argument 'request' (unused-argument)
+tracks_API/views.py:5:0: C0411: standard import "import json" should be placed before "from django.http import HttpRequest, HttpResponse" (wrong-import-order)
+
+
